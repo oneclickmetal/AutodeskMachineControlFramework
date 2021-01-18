@@ -21,6 +21,22 @@ jobs:
         with:
           buildscript: './build_clean.sh'
 
+
+  build_linux_armv7:
+    runs-on: ubuntu-latest
+    name: Build Linux armv7 binaries
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up QEMU
+        id: qemu
+        uses: docker/setup-qemu-action@v1
+      - name: Run buildscript in docker
+        uses: ./.github/build-linux-armv7
+        id: build
+        with:
+          buildscript: './build_clean.sh'
+
   build_win_x64:
     runs-on: windows-latest
     name: Build Windows x86-64 Binaries

@@ -1,0 +1,12 @@
+name: 'Build Linux armv7'
+description: 'Build binaries for Linux armv7'
+inputs:
+  buildscript:  # id of input
+    description: 'Path to the build script to run'
+    required: true
+    default: './build_clean.sh'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.buildscript }}
